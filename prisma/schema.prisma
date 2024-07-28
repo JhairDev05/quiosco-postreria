@@ -1,0 +1,93 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Category {
+  idCategory Int       @id @default(autoincrement())
+  name       String
+  slug       String
+  products   Product[]
+}
+
+model Product {
+  idProduct      Int             @id @default(autoincrement())
+  name           String
+  price          Float
+  description    String
+  image          String
+  categoryId     Int
+  category       Category        @relation(fields: [categoryId], references: [idCategory])
+  extras         String[]
+  orderItems     OrderProducts[]
+}
+
+model Salsa {
+  idSalsa Int    @id @default(autoincrement())
+  name    String
+  price   Float
+}
+
+model Topping {
+  idTopping Int    @id @default(autoincrement())
+  name      String
+  price     Float
+}
+
+model PerlasExplosivas {
+  idPerlas Int    @id @default(autoincrement())
+  name     String
+  price    Float
+}
+
+model ToppingFruit {
+  idToppingFruta Int    @id @default(autoincrement())
+  name           String
+  price          Float
+}
+
+model SodaItaliana {
+  idSoda Int    @id @default(autoincrement())
+  name   String
+  price  Float
+}
+
+model Frappe {
+  idFrappe Int    @id @default(autoincrement())
+  name     String
+  price    Float
+}
+
+model Tapioca {
+  idTapioca Int    @id @default(autoincrement())
+  name      String
+  price     Float
+}
+
+model Cafe {
+  idCafe Int    @id @default(autoincrement())
+  name   String
+}
+
+model Order {
+  idOrder       Int             @id @default(autoincrement())
+  name          String
+  total         Float
+  date          DateTime        @default(now())
+  status        Boolean         @default(false)
+  orderReadyAt  DateTime?
+  orderProducts OrderProducts[]
+}
+
+model OrderProducts {
+  idOrderProducts Int     @id @default(autoincrement())
+  orderId         Int
+  order           Order   @relation(fields: [orderId], references: [idOrder])
+  productId       Int
+  product         Product @relation(fields: [productId], references: [idProduct])
+  quantity        Int
+}
