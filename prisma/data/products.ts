@@ -206,7 +206,7 @@ export const products = [
   {
     name: "Café latte frío",
     price: 45.00,
-    description: "Caramel, chocolate, almendra, cajeta, vainilla francesa, avellana, crema irlandesa",
+    description: "",
     image: "cafe_latte_frio",
     categoryId: 5
   },
@@ -220,14 +220,14 @@ export const products = [
   {
     name: "Café americano frío",
     price: 40.00,
-    description: "Americano frío, chocolate, almendra, cajeta, vainilla francesa, crema irlandesa, caramel, avellana",
+    description: "",
     image: "cafe_americano_frio",
     categoryId: 5
   },
   {
     name: "Milk Tea/Tapioca frappe",
     price: 65.00,
-    description: "Frutos rojos, fresa, unicornio azul, vainilla, algodón de azúcar, mango, red velvet, taro, unicornio rosa, cookies and cream, nutella, oreo",
+    description: "",
     image: "tapioca",
     categoryId: 5
   }

@@ -9,6 +9,7 @@ import { sodas } from "@/prisma/data/sodas";
 import { toppings } from "@/prisma/data/toppings";
 import { salsas } from "@/prisma/data/salsas";
 import { frutas } from "@/prisma/data/frutas";
+import { cafes } from '@/prisma/data/cafe';
 
 type AddExtraProps = {
     product: Product;
@@ -95,7 +96,7 @@ export default function AddExtra({ product, onExtrasChange }: AddExtraProps) {
 
             {product.name === 'Milk Tea/Tapioca frappe' && (
                 <div className="space-y-2 mt-4">
-                    <label className="text-slate-800" htmlFor="tapiocaId">Tapioca:</label>
+                    <label className="text-slate-800" htmlFor="tapiocaId">Sabor:</label>
                     <select
                         className="block w-full p-3 bg-slate-100"
                         id="tapiocaId"
@@ -469,6 +470,25 @@ export default function AddExtra({ product, onExtrasChange }: AddExtraProps) {
                         </select>
                     </div>
                 </>
+            )}
+
+            {product.name.includes('frío')  && (
+                <div className="space-y-2 mt-4">
+                <label className="text-slate-800" htmlFor="cafes">Sabor:</label>
+                <select
+                    className="block w-full p-3 bg-slate-100"
+                    id="cafe"
+                    name="includeExtra"
+                    onChange={(e) => handleChange('cafe', e.target.value)}
+                >
+                    <option value="">-- Seleccione --</option>
+                    {cafes.map(cafe => (
+                        <option key={cafe.name} value={cafe.name}>
+                            {cafe.name}
+                        </option>
+                    ))}
+                </select>
+            </div>
             )}
         </>
     )
