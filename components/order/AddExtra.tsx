@@ -204,6 +204,75 @@ export default function AddExtra({ product, onExtrasChange }: AddExtraProps) {
                 </>
             )}
 
+            {product.description === '1 salsa, 3 topping' && (
+                <>
+                    <div className="space-y-2 mt-4">
+                        <label className="text-slate-800" htmlFor="salsa">Salsa:</label>
+                        <select
+                            className="block w-full p-3 bg-slate-100"
+                            id="salsa"
+                            name="includeExtra"
+                            onChange={(e) => handleChange('salsa', e.target.value)}
+                        >
+                            <option value="">-- Seleccione --</option>
+                            {salsas.map(salsa => (
+                                <option key={salsa.name} value={salsa.name}>
+                                    {salsa.name}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                    <div className="space-y-2 mt-4">
+                        <label className="text-slate-800" htmlFor="topping">Topping:</label>
+                        <select
+                            className="block w-full p-3 bg-slate-100"
+                            id="topping"
+                            name="includeExtra"
+                            onChange={(e) => handleChange('topping', e.target.value)}
+                        >
+                            <option value="">-- Seleccione --</option>
+                            {toppings.map(topping => (
+                                <option key={topping.name} value={topping.name}>
+                                    {topping.name}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                    <div className="space-y-2 mt-4">
+                        <label className="text-slate-800" htmlFor="topping">Topping:</label>
+                        <select
+                            className="block w-full p-3 bg-slate-100"
+                            id="topping"
+                            name="includeExtra"
+                            onChange={(e) => handleChange('topping', e.target.value)}
+                        >
+                            <option value="">-- Seleccione --</option>
+                            {toppings.map(topping => (
+                                <option key={topping.name} value={topping.name}>
+                                    {topping.name}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                    <div className="space-y-2 mt-4">
+                        <label className="text-slate-800" htmlFor="topping">Topping:</label>
+                        <select
+                            className="block w-full p-3 bg-slate-100"
+                            id="topping"
+                            name="includeExtra"
+                            onChange={(e) => handleChange('topping', e.target.value)}
+                        >
+                            <option value="">-- Seleccione --</option>
+                            {toppings.map(topping => (
+                                <option key={topping.name} value={topping.name}>
+                                    {topping.name}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                </>
+            )}
+
             {product.description === '1 salsa, 1 topping' && (
                 <>
                     <div className="space-y-2 mt-4">
@@ -472,23 +541,124 @@ export default function AddExtra({ product, onExtrasChange }: AddExtraProps) {
                 </>
             )}
 
-            {product.name.includes('frío')  && (
+            {product.name.includes('frío') && (
                 <div className="space-y-2 mt-4">
-                <label className="text-slate-800" htmlFor="cafes">Sabor:</label>
-                <select
-                    className="block w-full p-3 bg-slate-100"
-                    id="cafe"
-                    name="includeExtra"
-                    onChange={(e) => handleChange('cafe', e.target.value)}
-                >
-                    <option value="">-- Seleccione --</option>
-                    {cafes.map(cafe => (
-                        <option key={cafe.name} value={cafe.name}>
-                            {cafe.name}
-                        </option>
-                    ))}
-                </select>
-            </div>
+                    <label className="text-slate-800" htmlFor="cafes">Sabor:</label>
+                    <select
+                        className="block w-full p-3 bg-slate-100"
+                        id="cafe"
+                        name="includeExtra"
+                        onChange={(e) => handleChange('cafe', e.target.value)}
+                    >
+                        <option value="">-- Seleccione --</option>
+                        {cafes.map(cafe => (
+                            <option key={cafe.name} value={cafe.name}>
+                                {cafe.name}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+            )}
+
+            {product.description === '3 salsa, 3 topping' && (
+                <>
+                    <div className="space-y-2 mt-4">
+                        <label className="text-slate-800" htmlFor="salsa">Salsa:</label>
+                        <select
+                            className="block w-full p-3 bg-slate-100"
+                            id="salsa"
+                            name="includeExtra"
+                            onChange={(e) => handleChange('salsa', e.target.value)}
+                        >
+                            <option value="">-- Seleccione --</option>
+                            {salsas.map(salsa => (
+                                <option key={salsa.name} value={salsa.name}>
+                                    {salsa.name}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                    <div className="space-y-2 mt-4">
+                        <label className="text-slate-800" htmlFor="salsa">Salsa:</label>
+                        <select
+                            className="block w-full p-3 bg-slate-100"
+                            id="salsa"
+                            name="includeExtra"
+                            onChange={(e) => handleChange('salsa', e.target.value)}
+                        >
+                            <option value="">-- Seleccione --</option>
+                            {salsas.map(salsa => (
+                                <option key={salsa.name} value={salsa.name}>
+                                    {salsa.name}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                    <div className="space-y-2 mt-4">
+                        <label className="text-slate-800" htmlFor="salsa">Salsa:</label>
+                        <select
+                            className="block w-full p-3 bg-slate-100"
+                            id="salsa"
+                            name="includeExtra"
+                            onChange={(e) => handleChange('salsa', e.target.value)}
+                        >
+                            <option value="">-- Seleccione --</option>
+                            {salsas.map(salsa => (
+                                <option key={salsa.name} value={salsa.name}>
+                                    {salsa.name}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                    <div className="space-y-2 mt-4">
+                        <label className="text-slate-800" htmlFor="topping">Topping:</label>
+                        <select
+                            className="block w-full p-3 bg-slate-100"
+                            id="topping"
+                            name="includeExtra"
+                            onChange={(e) => handleChange('topping', e.target.value)}
+                        >
+                            <option value="">-- Seleccione --</option>
+                            {toppings.map(topping => (
+                                <option key={topping.name} value={topping.name}>
+                                    {topping.name}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                    <div className="space-y-2 mt-4">
+                        <label className="text-slate-800" htmlFor="topping">Topping:</label>
+                        <select
+                            className="block w-full p-3 bg-slate-100"
+                            id="topping"
+                            name="includeExtra"
+                            onChange={(e) => handleChange('topping', e.target.value)}
+                        >
+                            <option value="">-- Seleccione --</option>
+                            {toppings.map(topping => (
+                                <option key={topping.name} value={topping.name}>
+                                    {topping.name}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                    <div className="space-y-2 mt-4">
+                        <label className="text-slate-800" htmlFor="topping">Topping:</label>
+                        <select
+                            className="block w-full p-3 bg-slate-100"
+                            id="topping"
+                            name="includeExtra"
+                            onChange={(e) => handleChange('topping', e.target.value)}
+                        >
+                            <option value="">-- Seleccione --</option>
+                            {toppings.map(topping => (
+                                <option key={topping.name} value={topping.name}>
+                                    {topping.name}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                </>
             )}
         </>
     )
