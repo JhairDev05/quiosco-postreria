@@ -12,12 +12,13 @@ export default function CategoryIcon({category} : CategoryIconProps) {
     const params = useParams<{category: string}>();
 
     return (
-        <div className={`${category.slug === params.category ? 'bg-amber-400' : ''} flex items-center gap-4 w-full border-t border-gray-200 p-3 last-of-type:border-b`}>
-            <div className="w-16 h-16 relative">
-            <Image sizes="(max-width: 768px) 50px" src={`/icon_${category.slug}.png`} alt="Imagen categoria" fill/>
+        <Link href={`/order/${category.slug}`} passHref>
+            <div className={`${category.slug === params.category ? 'bg-amber-400' : ''} flex items-center gap-4 w-full border-t border-gray-200 p-3 last-of-type:border-b cursor-pointer`}>
+                <div className="w-16 h-16 relative">
+                    <Image sizes="(max-width: 768px) 50px" src={`/icon_${category.slug}.png`} alt="Imagen categoria" fill />
+                </div>
+                <div className="text-xl font-bold">{category.name}</div>
             </div>
-
-            <Link className="text-xl font-bold" href={`/order/${category.slug}`}>{category.name}</Link>
-        </div>
+        </Link>
     )
 }
