@@ -19,10 +19,12 @@ type AddExtraProps = {
 export default function AddExtra({ product, onExtrasChange }: AddExtraProps) {
     const [selectedExtras, setSelectedExtras] = useState<string[]>([]);
 
-    const handleChange = (type: string, value: string) => {
+    const handleChange = (type: string, id: string, value: string) => {
         setSelectedExtras(prev => {
-            const newExtras = prev.filter(extra => !extra.startsWith(type));
-            if (value) newExtras.push(`${value}`);
+            // Eliminar el extra con el mismo identificador único
+            const newExtras = prev.filter(extra => !extra.startsWith(`${type} ${id}:`));
+            // Agregar el nuevo extra si hay un valor seleccionado
+            if (value) newExtras.push(`${type} ${id}: ${value}`);
             return newExtras;
         });
     };
@@ -44,7 +46,7 @@ export default function AddExtra({ product, onExtrasChange }: AddExtraProps) {
                         className="block w-full p-3 bg-slate-100"
                         id="frappeId"
                         name="includeExtra"
-                        onChange={(e) => handleChange('frappe', e.target.value)}
+                        onChange={(e) => handleChange('Sabor', '', e.target.value)}
                     >
                         <option value="">-- Seleccione --</option>
                         {frappes.map(frappe => (
@@ -63,7 +65,7 @@ export default function AddExtra({ product, onExtrasChange }: AddExtraProps) {
                         className="block w-full p-3 bg-slate-100"
                         id="frappeId"
                         name="includeExtra"
-                        onChange={(e) => handleChange('frappe', e.target.value)}
+                        onChange={(e) => handleChange('Sabor', '', e.target.value)}
                     >
                         <option value="">-- Seleccione --</option>
                         {frappes.map(frappe => (
@@ -82,7 +84,7 @@ export default function AddExtra({ product, onExtrasChange }: AddExtraProps) {
                         className="block w-full p-3 bg-slate-100"
                         id="frappeId"
                         name="includeExtra"
-                        onChange={(e) => handleChange('frappe', e.target.value)}
+                        onChange={(e) => handleChange('Sabor', '', e.target.value)}
                     >
                         <option value="">-- Seleccione --</option>
                         {frappes.map(frappe => (
@@ -101,7 +103,7 @@ export default function AddExtra({ product, onExtrasChange }: AddExtraProps) {
                         className="block w-full p-3 bg-slate-100"
                         id="tapiocaId"
                         name="includeExtra"
-                        onChange={(e) => handleChange('tapioca', e.target.value)}
+                        onChange={(e) => handleChange('Sabor', '', e.target.value)}
                     >
                         <option value="">-- Seleccione --</option>
                         {tapiocas.map(tapioca => (
@@ -121,7 +123,7 @@ export default function AddExtra({ product, onExtrasChange }: AddExtraProps) {
                             className="block w-full p-3 bg-slate-100"
                             id="sodaId"
                             name="includeExtra"
-                            onChange={(e) => handleChange('soda', e.target.value)}
+                            onChange={(e) => handleChange('Sabor', '', e.target.value)}
                         >
                             <option value="">-- Seleccione --</option>
                             {sodas.map(soda => (
@@ -138,7 +140,7 @@ export default function AddExtra({ product, onExtrasChange }: AddExtraProps) {
                             className="block w-full p-3 bg-slate-100"
                             id="perlasId"
                             name="includeExtra"
-                            onChange={(e) => handleChange('perlas', e.target.value)}
+                            onChange={(e) => handleChange('Perlas', '', e.target.value)}
                         >
                             <option value="">-- Seleccione --</option>
                             {perlas.map(perlas => (
@@ -159,7 +161,7 @@ export default function AddExtra({ product, onExtrasChange }: AddExtraProps) {
                             className="block w-full p-3 bg-slate-100"
                             id="salsa"
                             name="includeExtra"
-                            onChange={(e) => handleChange('salsa', e.target.value)}
+                            onChange={(e) => handleChange('Salsa', '1', e.target.value)}
                         >
                             <option value="">-- Seleccione --</option>
                             {salsas.map(salsa => (
@@ -175,7 +177,7 @@ export default function AddExtra({ product, onExtrasChange }: AddExtraProps) {
                             className="block w-full p-3 bg-slate-100"
                             id="topping"
                             name="includeExtra"
-                            onChange={(e) => handleChange('topping', e.target.value)}
+                            onChange={(e) => handleChange('Topping', '1', e.target.value)}
                         >
                             <option value="">-- Seleccione --</option>
                             {toppings.map(toppings => (
@@ -191,7 +193,7 @@ export default function AddExtra({ product, onExtrasChange }: AddExtraProps) {
                             className="block w-full p-3 bg-slate-100"
                             id="topping"
                             name="includeExtra"
-                            onChange={(e) => handleChange('topping', e.target.value)}
+                            onChange={(e) => handleChange('Topping', '2', e.target.value)}
                         >
                             <option value="">-- Seleccione --</option>
                             {toppings.map(topping => (
@@ -212,7 +214,7 @@ export default function AddExtra({ product, onExtrasChange }: AddExtraProps) {
                             className="block w-full p-3 bg-slate-100"
                             id="salsa"
                             name="includeExtra"
-                            onChange={(e) => handleChange('salsa', e.target.value)}
+                            onChange={(e) => handleChange('Salsa', '1', e.target.value)}
                         >
                             <option value="">-- Seleccione --</option>
                             {salsas.map(salsa => (
@@ -228,7 +230,7 @@ export default function AddExtra({ product, onExtrasChange }: AddExtraProps) {
                             className="block w-full p-3 bg-slate-100"
                             id="topping"
                             name="includeExtra"
-                            onChange={(e) => handleChange('topping', e.target.value)}
+                            onChange={(e) => handleChange('Topping', '1', e.target.value)}
                         >
                             <option value="">-- Seleccione --</option>
                             {toppings.map(topping => (
@@ -244,7 +246,7 @@ export default function AddExtra({ product, onExtrasChange }: AddExtraProps) {
                             className="block w-full p-3 bg-slate-100"
                             id="topping"
                             name="includeExtra"
-                            onChange={(e) => handleChange('topping', e.target.value)}
+                            onChange={(e) => handleChange('Topping', '2', e.target.value)}
                         >
                             <option value="">-- Seleccione --</option>
                             {toppings.map(topping => (
@@ -260,7 +262,7 @@ export default function AddExtra({ product, onExtrasChange }: AddExtraProps) {
                             className="block w-full p-3 bg-slate-100"
                             id="topping"
                             name="includeExtra"
-                            onChange={(e) => handleChange('topping', e.target.value)}
+                            onChange={(e) => handleChange('Topping', '3', e.target.value)}
                         >
                             <option value="">-- Seleccione --</option>
                             {toppings.map(topping => (
@@ -281,7 +283,7 @@ export default function AddExtra({ product, onExtrasChange }: AddExtraProps) {
                             className="block w-full p-3 bg-slate-100"
                             id="salsa"
                             name="includeExtra"
-                            onChange={(e) => handleChange('salsa', e.target.value)}
+                            onChange={(e) => handleChange('Salsa', '1', e.target.value)}
                         >
                             <option value="">-- Seleccione --</option>
                             {salsas.map(salsa => (
@@ -297,7 +299,7 @@ export default function AddExtra({ product, onExtrasChange }: AddExtraProps) {
                             className="block w-full p-3 bg-slate-100"
                             id="topping"
                             name="includeExtra"
-                            onChange={(e) => handleChange('topping', e.target.value)}
+                            onChange={(e) => handleChange('Topping', '1', e.target.value)}
                         >
                             <option value="">-- Seleccione --</option>
                             {toppings.map(topping => (
@@ -318,7 +320,7 @@ export default function AddExtra({ product, onExtrasChange }: AddExtraProps) {
                             className="block w-full p-3 bg-slate-100"
                             id="salsa"
                             name="includeExtra"
-                            onChange={(e) => handleChange('salsa', e.target.value)}
+                            onChange={(e) => handleChange('Salsa', '1', e.target.value)}
                         >
                             <option value="">-- Seleccione --</option>
                             {salsas.map(salsa => (
@@ -334,7 +336,7 @@ export default function AddExtra({ product, onExtrasChange }: AddExtraProps) {
                             className="block w-full p-3 bg-slate-100"
                             id="topping"
                             name="includeExtra"
-                            onChange={(e) => handleChange('topping', e.target.value)}
+                            onChange={(e) => handleChange('Topping', '1', e.target.value)}
                         >
                             <option value="">-- Seleccione --</option>
                             {toppings.map(topping => (
@@ -350,7 +352,7 @@ export default function AddExtra({ product, onExtrasChange }: AddExtraProps) {
                             className="block w-full p-3 bg-slate-100"
                             id="fruta"
                             name="includeExtra"
-                            onChange={(e) => handleChange('fruta', e.target.value)}
+                            onChange={(e) => handleChange('Fruta', '1', e.target.value)}
                         >
                             <option value="">-- Seleccione --</option>
                             {frutas.map(fruta => (
@@ -372,7 +374,7 @@ export default function AddExtra({ product, onExtrasChange }: AddExtraProps) {
                             className="block w-full p-3 bg-slate-100"
                             id="salsa"
                             name="includeExtra"
-                            onChange={(e) => handleChange('salsa', e.target.value)}
+                            onChange={(e) => handleChange('Salsa', '1', e.target.value)}
                         >
                             <option value="">-- Seleccione --</option>
                             {salsas.map(salsa => (
@@ -388,7 +390,7 @@ export default function AddExtra({ product, onExtrasChange }: AddExtraProps) {
                             className="block w-full p-3 bg-slate-100"
                             id="salsa"
                             name="includeExtra"
-                            onChange={(e) => handleChange('salsa', e.target.value)}
+                            onChange={(e) => handleChange('Salsa', '2', e.target.value)}
                         >
                             <option value="">-- Seleccione --</option>
                             {salsas.map(salsa => (
@@ -404,7 +406,7 @@ export default function AddExtra({ product, onExtrasChange }: AddExtraProps) {
                             className="block w-full p-3 bg-slate-100"
                             id="topping"
                             name="includeExtra"
-                            onChange={(e) => handleChange('topping', e.target.value)}
+                            onChange={(e) => handleChange('Topping', '1', e.target.value)}
                         >
                             <option value="">-- Seleccione --</option>
                             {toppings.map(topping => (
@@ -420,7 +422,7 @@ export default function AddExtra({ product, onExtrasChange }: AddExtraProps) {
                             className="block w-full p-3 bg-slate-100"
                             id="topping"
                             name="includeExtra"
-                            onChange={(e) => handleChange('topping', e.target.value)}
+                            onChange={(e) => handleChange('Topping', '2', e.target.value)}
                         >
                             <option value="">-- Seleccione --</option>
                             {toppings.map(topping => (
@@ -436,7 +438,7 @@ export default function AddExtra({ product, onExtrasChange }: AddExtraProps) {
                             className="block w-full p-3 bg-slate-100"
                             id="topping"
                             name="includeExtra"
-                            onChange={(e) => handleChange('topping', e.target.value)}
+                            onChange={(e) => handleChange('Topping', '3', e.target.value)}
                         >
                             <option value="">-- Seleccione --</option>
                             {toppings.map(topping => (
@@ -457,7 +459,7 @@ export default function AddExtra({ product, onExtrasChange }: AddExtraProps) {
                             className="block w-full p-3 bg-slate-100"
                             id="salsa"
                             name="includeExtra"
-                            onChange={(e) => handleChange('salsa', e.target.value)}
+                            onChange={(e) => handleChange('Salsa', '1', e.target.value)}
                         >
                             <option value="">-- Seleccione --</option>
                             {salsas.map(salsa => (
@@ -476,9 +478,9 @@ export default function AddExtra({ product, onExtrasChange }: AddExtraProps) {
                         <label className="text-slate-800" htmlFor="salsa">Salsa:</label>
                         <select
                             className="block w-full p-3 bg-slate-100"
-                            id="salsa"
+                            id="salsa1"
                             name="includeExtra"
-                            onChange={(e) => handleChange('salsa', e.target.value)}
+                            onChange={(e) => handleChange('Salsa', '1', e.target.value)}
                         >
                             <option value="">-- Seleccione --</option>
                             {salsas.map(salsa => (
@@ -492,9 +494,9 @@ export default function AddExtra({ product, onExtrasChange }: AddExtraProps) {
                         <label className="text-slate-800" htmlFor="salsa">Salsa:</label>
                         <select
                             className="block w-full p-3 bg-slate-100"
-                            id="salsa"
+                            id="salsa2"
                             name="includeExtra"
-                            onChange={(e) => handleChange('salsa', e.target.value)}
+                            onChange={(e) => handleChange('Salsa', '2', e.target.value)}
                         >
                             <option value="">-- Seleccione --</option>
                             {salsas.map(salsa => (
@@ -509,9 +511,9 @@ export default function AddExtra({ product, onExtrasChange }: AddExtraProps) {
                         <label className="text-slate-800" htmlFor="topping">Topping:</label>
                         <select
                             className="block w-full p-3 bg-slate-100"
-                            id="topping"
+                            id="topping1"
                             name="includeExtra"
-                            onChange={(e) => handleChange('topping', e.target.value)}
+                            onChange={(e) => handleChange('Topping', '1', e.target.value)}
                         >
                             <option value="">-- Seleccione --</option>
                             {toppings.map(topping => (
@@ -526,9 +528,9 @@ export default function AddExtra({ product, onExtrasChange }: AddExtraProps) {
                         <label className="text-slate-800" htmlFor="topping">Topping:</label>
                         <select
                             className="block w-full p-3 bg-slate-100"
-                            id="topping"
+                            id="topping2"
                             name="includeExtra"
-                            onChange={(e) => handleChange('topping', e.target.value)}
+                            onChange={(e) => handleChange('Topping', '2', e.target.value)}
                         >
                             <option value="">-- Seleccione --</option>
                             {toppings.map(topping => (
@@ -548,7 +550,7 @@ export default function AddExtra({ product, onExtrasChange }: AddExtraProps) {
                         className="block w-full p-3 bg-slate-100"
                         id="cafe"
                         name="includeExtra"
-                        onChange={(e) => handleChange('cafe', e.target.value)}
+                        onChange={(e) => handleChange('Sabor', '1', e.target.value)}
                     >
                         <option value="">-- Seleccione --</option>
                         {cafes.map(cafe => (
@@ -568,7 +570,7 @@ export default function AddExtra({ product, onExtrasChange }: AddExtraProps) {
                             className="block w-full p-3 bg-slate-100"
                             id="salsa"
                             name="includeExtra"
-                            onChange={(e) => handleChange('salsa', e.target.value)}
+                            onChange={(e) => handleChange('Salsa', '1', e.target.value)}
                         >
                             <option value="">-- Seleccione --</option>
                             {salsas.map(salsa => (
@@ -584,7 +586,7 @@ export default function AddExtra({ product, onExtrasChange }: AddExtraProps) {
                             className="block w-full p-3 bg-slate-100"
                             id="salsa"
                             name="includeExtra"
-                            onChange={(e) => handleChange('salsa', e.target.value)}
+                            onChange={(e) => handleChange('Salsa', '2', e.target.value)}
                         >
                             <option value="">-- Seleccione --</option>
                             {salsas.map(salsa => (
@@ -600,7 +602,7 @@ export default function AddExtra({ product, onExtrasChange }: AddExtraProps) {
                             className="block w-full p-3 bg-slate-100"
                             id="salsa"
                             name="includeExtra"
-                            onChange={(e) => handleChange('salsa', e.target.value)}
+                            onChange={(e) => handleChange('Salsa', '3', e.target.value)}
                         >
                             <option value="">-- Seleccione --</option>
                             {salsas.map(salsa => (
@@ -616,7 +618,7 @@ export default function AddExtra({ product, onExtrasChange }: AddExtraProps) {
                             className="block w-full p-3 bg-slate-100"
                             id="topping"
                             name="includeExtra"
-                            onChange={(e) => handleChange('topping', e.target.value)}
+                            onChange={(e) => handleChange('Topping', '1', e.target.value)}
                         >
                             <option value="">-- Seleccione --</option>
                             {toppings.map(topping => (
@@ -632,7 +634,7 @@ export default function AddExtra({ product, onExtrasChange }: AddExtraProps) {
                             className="block w-full p-3 bg-slate-100"
                             id="topping"
                             name="includeExtra"
-                            onChange={(e) => handleChange('topping', e.target.value)}
+                            onChange={(e) => handleChange('Topping', '2', e.target.value)}
                         >
                             <option value="">-- Seleccione --</option>
                             {toppings.map(topping => (
@@ -648,7 +650,7 @@ export default function AddExtra({ product, onExtrasChange }: AddExtraProps) {
                             className="block w-full p-3 bg-slate-100"
                             id="topping"
                             name="includeExtra"
-                            onChange={(e) => handleChange('topping', e.target.value)}
+                            onChange={(e) => handleChange('Topping', '3', e.target.value)}
                         >
                             <option value="">-- Seleccione --</option>
                             {toppings.map(topping => (
