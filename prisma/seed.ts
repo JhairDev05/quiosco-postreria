@@ -9,7 +9,6 @@ import { sodas } from "./data/sodas";
 import { toppings } from "./data/toppings";
 import { tapiocas } from "./data/tapiocas";
 import { cafes } from "./data/cafe";
-import { pago } from "./data/pago";
 
 const prisma = new PrismaClient();
 
