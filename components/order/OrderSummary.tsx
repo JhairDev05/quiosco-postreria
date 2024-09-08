@@ -7,6 +7,7 @@ import { createOrder } from "@/actions/create-order-action";
 import { OrderSchema } from "@/src/schema";
 import { toast } from 'react-toastify'
 import { updateProductExtras } from "../products/UpdateExtrasProduct";
+import Heading from "../ui/Heading";
 
 export default function OrderSummary() {
     const order = useStore((state) => state.order);
@@ -60,6 +61,8 @@ export default function OrderSummary() {
                     ))}
 
                     <p className="text-2xl mt-20 text-center">Total a pagar: {''} <span className="font-bold">{formatCurrency(total)}</span></p>
+
+                    <Heading>Hola</Heading>
 
                     <form className="w-full mt-20 space-y-5" onSubmit={(e) => {
                         e.preventDefault();

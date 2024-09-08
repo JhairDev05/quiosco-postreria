@@ -1,4 +1,13 @@
 -- CreateTable
+CREATE TABLE "Category" (
+    "idCategory" SERIAL NOT NULL,
+    "name" TEXT NOT NULL,
+    "slug" TEXT NOT NULL,
+
+    CONSTRAINT "Category_pkey" PRIMARY KEY ("idCategory")
+);
+
+-- CreateTable
 CREATE TABLE "Product" (
     "idProduct" SERIAL NOT NULL,
     "name" TEXT NOT NULL,
@@ -6,38 +15,9 @@ CREATE TABLE "Product" (
     "description" TEXT NOT NULL,
     "image" TEXT NOT NULL,
     "categoryId" INTEGER NOT NULL,
+    "extras" TEXT[],
 
     CONSTRAINT "Product_pkey" PRIMARY KEY ("idProduct")
-);
-
--- CreateTable
-CREATE TABLE "Extra" (
-    "idExtra" SERIAL NOT NULL,
-    "name" TEXT NOT NULL,
-    "price" DOUBLE PRECISION NOT NULL,
-
-    CONSTRAINT "Extra_pkey" PRIMARY KEY ("idExtra")
-);
-
--- CreateTable
-CREATE TABLE "ProductExtra" (
-    "idProductExtra" SERIAL NOT NULL,
-    "productId" INTEGER NOT NULL,
-    "extraId" INTEGER NOT NULL,
-    "quantity" INTEGER NOT NULL,
-
-    CONSTRAINT "ProductExtra_pkey" PRIMARY KEY ("idProductExtra")
-);
-
--- CreateTable
-CREATE TABLE "IncludedExtra" (
-    "idIncludedExtra" SERIAL NOT NULL,
-    "productId" INTEGER NOT NULL,
-    "extraId" INTEGER NOT NULL,
-    "quantity" INTEGER NOT NULL,
-    "name" TEXT NOT NULL,
-
-    CONSTRAINT "IncludedExtra_pkey" PRIMARY KEY ("idIncludedExtra")
 );
 
 -- CreateTable
@@ -135,18 +115,6 @@ CREATE TABLE "OrderProducts" (
 
 -- AddForeignKey
 ALTER TABLE "Product" ADD CONSTRAINT "Product_categoryId_fkey" FOREIGN KEY ("categoryId") REFERENCES "Category"("idCategory") ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "ProductExtra" ADD CONSTRAINT "ProductExtra_productId_fkey" FOREIGN KEY ("productId") REFERENCES "Product"("idProduct") ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "ProductExtra" ADD CONSTRAINT "ProductExtra_extraId_fkey" FOREIGN KEY ("extraId") REFERENCES "Extra"("idExtra") ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "IncludedExtra" ADD CONSTRAINT "IncludedExtra_productId_fkey" FOREIGN KEY ("productId") REFERENCES "Product"("idProduct") ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "IncludedExtra" ADD CONSTRAINT "IncludedExtra_extraId_fkey" FOREIGN KEY ("extraId") REFERENCES "Extra"("idExtra") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "OrderProducts" ADD CONSTRAINT "OrderProducts_orderId_fkey" FOREIGN KEY ("orderId") REFERENCES "Order"("idOrder") ON DELETE RESTRICT ON UPDATE CASCADE;

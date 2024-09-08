@@ -15,15 +15,15 @@ model Category {
 }
 
 model Product {
-  idProduct      Int             @id @default(autoincrement())
-  name           String
-  price          Float
-  description    String
-  image          String
-  categoryId     Int
-  category       Category        @relation(fields: [categoryId], references: [idCategory])
-  extras         String[]
-  orderItems     OrderProducts[]
+  idProduct   Int             @id @default(autoincrement())
+  name        String
+  price       Float
+  description String
+  image       String
+  categoryId  Int
+  category    Category        @relation(fields: [categoryId], references: [idCategory])
+  extras      String[]
+  orderItems  OrderProducts[]
 }
 
 model Salsa {
