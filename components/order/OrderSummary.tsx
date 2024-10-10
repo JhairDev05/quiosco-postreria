@@ -62,8 +62,6 @@ export default function OrderSummary() {
 
                     <p className="text-2xl mt-20 text-center">Total a pagar: {''} <span className="font-bold">{formatCurrency(total)}</span></p>
 
-                    <Heading>Hola</Heading>
-
                     <form className="w-full mt-20 space-y-5" onSubmit={(e) => {
                         e.preventDefault();
                         const form = e.target as HTMLFormElement; // Conversión de tipo
