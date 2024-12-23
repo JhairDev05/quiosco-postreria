@@ -21,9 +21,9 @@ model Product {
   description String
   image       String
   categoryId  Int
-  category    Category        @relation(fields: [categoryId], references: [idCategory])
   extras      String[]
   orderItems  OrderProducts[]
+  category    Category        @relation(fields: [categoryId], references: [idCategory])
 }
 
 model Salsa {
@@ -86,8 +86,8 @@ model Order {
 model OrderProducts {
   idOrderProducts Int     @id @default(autoincrement())
   orderId         Int
-  order           Order   @relation(fields: [orderId], references: [idOrder])
   productId       Int
-  product         Product @relation(fields: [productId], references: [idProduct])
   quantity        Int
+  order           Order   @relation(fields: [orderId], references: [idOrder])
+  product         Product @relation(fields: [productId], references: [idProduct])
 }

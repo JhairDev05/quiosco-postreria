@@ -31,7 +31,7 @@ async function main() {
         });
         await prisma.salsa.createMany({
             data: salsas
-        });
+        }); 
         await prisma.sodaItaliana.createMany({
             data: sodas
         });

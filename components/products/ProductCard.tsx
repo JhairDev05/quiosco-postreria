@@ -1,4 +1,4 @@
-"use client"; // Añade esta línea al inicio
+"use client"; 
 import { formatCurrency, getImagePath } from "@/src/utils";
 import { Product } from "@prisma/client";
 import Image from "next/image";
